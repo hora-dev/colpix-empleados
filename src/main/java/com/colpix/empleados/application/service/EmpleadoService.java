@@ -13,4 +13,8 @@ public class EmpleadoService {
     public Empleado crearEmpleado(Empleado empleado) {
         return empleadoRepository.crearEmpleado(empleado);
     }
+
+    public Empleado actualizarEmpleado(Empleado empleado) {
+        return empleadoRepository.actualizarEmpleado(empleado);
+    }
 }

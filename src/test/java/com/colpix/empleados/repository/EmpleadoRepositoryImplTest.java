@@ -5,15 +5,19 @@ import com.colpix.empleados.infraestructure.adapter.EmpleadoCrudRepository;
 import com.colpix.empleados.infraestructure.adapter.EmpleadoRepositoryImpl;
 import com.colpix.empleados.infraestructure.entity.EmpleadoEntity;
 import com.colpix.empleados.infraestructure.mapper.EmpleadoMapper;
+import net.bytebuddy.asm.Advice;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -53,5 +57,55 @@ class EmpleadoRepositoryImplTest {
         assertNotNull(resultado);
         verify(empleadoCrudRepository, times(1)).save(entidad);
         verify(empleadoMapper).toEmpleadoEntity(empleadoDominio);
+    }
+
+    @Test
+    void actualizarEmpleado() {
+
+        Empleado empleadoDominio = Empleado.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("juan@email.com")
+                .supervisorId(0).build();
+
+        EmpleadoEntity entidadBD = EmpleadoEntity.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("email@email.com")
+                .supervisor(new EmpleadoEntity()).build();
+
+        EmpleadoEntity entidadNueva = EmpleadoEntity.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("juan@email.com")
+                .supervisor(new EmpleadoEntity()).build();
+
+        when(empleadoMapper.toEmpleadoEntity(empleadoDominio)).thenReturn(entidadNueva);
+        when(empleadoMapper.toEmpleado(entidadNueva)).thenReturn(empleadoDominio);
+        when(empleadoCrudRepository.findById(1)).thenReturn(Optional.of(entidadBD));
+        when(empleadoCrudRepository.save(any(EmpleadoEntity.class))).thenReturn(entidadNueva);
+
+        Empleado resultado = empleadoRepository.actualizarEmpleado(empleadoDominio);
+
+        assertNotNull(resultado);
+        assertEquals(resultado.getEmail(), empleadoDominio.getEmail());
+        verify(empleadoCrudRepository, times(1)).save(entidadBD);
+        verify(empleadoMapper).toEmpleadoEntity(empleadoDominio);
+    }
+
+    @Test
+    void empleadoAActualizarNoEncontrado() {
+
+        Empleado empleadoDominio = Empleado.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("juan@email.com")
+                .supervisorId(0).build();
+
+        when(empleadoCrudRepository.findById(1)).thenReturn(Optional.empty());
+
+        assertThrows(IllegalStateException.class, () -> {
+            empleadoRepository.actualizarEmpleado(empleadoDominio);
+        });
     }
 }

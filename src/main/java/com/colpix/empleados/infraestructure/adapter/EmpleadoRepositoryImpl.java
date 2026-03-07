@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,7 +28,16 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
 
     @Override
     public Empleado actualizarEmpleado(Empleado empleado) {
-        return null;
+        EmpleadoEntity empleadoBD = empleadoCrudRepository.findById(empleado.getId()).orElse(null);
+        if(!Objects.isNull(empleadoBD)) {
+            EmpleadoEntity empleadoEntityActualizado = empleadoMapper.toEmpleadoEntity(empleado);
+            empleadoBD.setEmail(empleadoEntityActualizado.getEmail());
+            empleadoBD.setNombre(empleadoEntityActualizado.getNombre());
+            empleadoBD.setSupervisor(empleadoEntityActualizado.getSupervisor());
+            empleadoBD.setUpdatedAt(LocalDateTime.now());
+            return empleadoMapper.toEmpleado(empleadoCrudRepository.save(empleadoBD));
+        }
+        throw new IllegalStateException("Empleado con id no encontrado " + empleado.getId());
     }
 
     @Override
