@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: empleados
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/app_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
