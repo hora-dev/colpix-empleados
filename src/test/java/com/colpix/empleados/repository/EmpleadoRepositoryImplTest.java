@@ -5,14 +5,11 @@ import com.colpix.empleados.infraestructure.adapter.EmpleadoCrudRepository;
 import com.colpix.empleados.infraestructure.adapter.EmpleadoRepositoryImpl;
 import com.colpix.empleados.infraestructure.entity.EmpleadoEntity;
 import com.colpix.empleados.infraestructure.mapper.EmpleadoMapper;
-import net.bytebuddy.asm.Advice;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
