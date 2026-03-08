@@ -29,6 +29,9 @@
 	<properties>
 		<java.version>21</java.version>
 		<version.mapstruct>1.5.2.Final</version.mapstruct>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.projectKey>mi-proyecto-spring</sonar.projectKey>
+		<sonar.token>sqp_6247f6687f9746b4d818b2e97f2acba2639e20cb</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -116,6 +119,11 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.1.2184</version>
 			</plugin>
 		</plugins>
 	</build>
