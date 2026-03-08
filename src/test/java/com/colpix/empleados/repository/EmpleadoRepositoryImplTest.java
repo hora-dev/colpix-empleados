@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -104,5 +105,54 @@ class EmpleadoRepositoryImplTest {
         assertThrows(IllegalStateException.class, () -> {
             empleadoRepository.actualizarEmpleado(empleadoDominio);
         });
+    }
+
+    @Test
+    void devuelveDetalles() {
+
+        EmpleadoEntity empleadoEntidad1 = EmpleadoEntity.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("juan@email.com")
+                .build();
+
+        EmpleadoEntity empleadoEntidad2 = EmpleadoEntity.builder()
+                .id(2)
+                .nombre("Pedro")
+                .email("pedro@email.com")
+              .build();
+
+        EmpleadoEntity empleadoEntidad3 = EmpleadoEntity.builder()
+                .id(3)
+                .nombre("Simon")
+                .email("simon@email.com")
+               .build();
+
+        Empleado empleadoDominio11 = Empleado.builder()
+                .id(1)
+                .nombre("Juan")
+                .email("juan@email.com")
+                .build();
+
+        Empleado empleadoDominio22 = Empleado.builder()
+                .id(2)
+                .nombre("Pedro")
+                .email("pedro@email.com")
+                .build();
+
+        Empleado empleadoDominio33 = Empleado.builder()
+                .id(3)
+                .nombre("Simon")
+                .email("simon@email.com")
+                .build();
+
+
+        when(empleadoCrudRepository.findAll()).thenReturn(List.of(empleadoEntidad1, empleadoEntidad2, empleadoEntidad3));
+        when(empleadoMapper.toEmpleadoList(empleadoCrudRepository.findAll())).thenReturn(List.of(empleadoDominio11, empleadoDominio22, empleadoDominio33));
+
+        List<Empleado> empleadoList = empleadoRepository.obtenerDetalle();
+
+        assertNotNull(empleadoList);
+        assertEquals(3, empleadoList.size());
     }
 }

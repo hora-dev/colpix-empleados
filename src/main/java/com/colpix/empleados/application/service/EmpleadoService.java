@@ -3,6 +3,8 @@ package com.colpix.empleados.application.service;
 import com.colpix.empleados.application.repository.EmpleadoRepository;
 import com.colpix.empleados.domain.Empleado;
 
+import java.util.List;
+
 public class EmpleadoService {
     private final EmpleadoRepository empleadoRepository;
 
@@ -16,5 +18,9 @@ public class EmpleadoService {
 
     public Empleado actualizarEmpleado(Empleado empleado) {
         return empleadoRepository.actualizarEmpleado(empleado);
+    }
+
+    public List<Empleado> obtenerDetalles() {
+        return empleadoRepository.obtenerDetalle();
     }
 }

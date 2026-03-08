@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Repository
@@ -43,5 +44,10 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
     @Override
     public EmpleadoDetalle obtenerDetalles(Empleado e) {
         return null;
+    }
+
+    @Override
+    public List<Empleado> obtenerDetalle() {
+        return empleadoMapper.toEmpleadoList(empleadoCrudRepository.findAll());
     }
 }
