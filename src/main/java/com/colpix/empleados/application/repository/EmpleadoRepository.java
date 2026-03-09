@@ -8,6 +8,6 @@ import java.util.List;
 public interface EmpleadoRepository {
     Empleado crearEmpleado(Empleado empleado);
     Empleado actualizarEmpleado(Empleado empleado);
-    EmpleadoDetalle obtenerDetalles(Empleado e);
+    EmpleadoDetalle obtenerDetalles(Integer idEmpleado) throws InterruptedException;
     List<Empleado> obtenerDetalle();
 }

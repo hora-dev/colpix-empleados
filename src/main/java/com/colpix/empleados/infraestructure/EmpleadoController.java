@@ -2,6 +2,8 @@ package com.colpix.empleados.infraestructure;
 
 import com.colpix.empleados.application.service.EmpleadoService;
 import com.colpix.empleados.domain.Empleado;
+import com.colpix.empleados.domain.EmpleadoDetalle;
+import com.colpix.empleados.infraestructure.dto.EmpleadoACargoDTO;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDTO;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDetalleDTO;
 import com.colpix.empleados.infraestructure.mapper.EmpleadoMapper;
@@ -40,4 +42,10 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleadoMapper.toEmpleadoDetalleDTOList(empleadoService.obtenerDetalles()));
 
     }
+
+    @GetMapping("/detalle/{id}")
+    public ResponseEntity<EmpleadoACargoDTO> obtenerDetalle(@PathVariable Integer id) throws InterruptedException {
+        return ResponseEntity.ok(empleadoMapper.toEmpleadosACargoDTO(empleadoService.obtenerDetalle(id)));
+    }
+
 }

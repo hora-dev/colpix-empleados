@@ -2,6 +2,7 @@ package com.colpix.empleados.application.service;
 
 import com.colpix.empleados.application.repository.EmpleadoRepository;
 import com.colpix.empleados.domain.Empleado;
+import com.colpix.empleados.domain.EmpleadoDetalle;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public class EmpleadoService {
 
     public List<Empleado> obtenerDetalles() {
         return empleadoRepository.obtenerDetalle();
+    }
+
+    public EmpleadoDetalle obtenerDetalle(Integer idEmpleado) throws InterruptedException {
+        return empleadoRepository.obtenerDetalles(idEmpleado);
+
     }
 }

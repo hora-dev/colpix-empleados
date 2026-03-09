@@ -1,8 +1,10 @@
 package com.colpix.empleados.infraestructure.mapper;
 
 import com.colpix.empleados.domain.Empleado;
+import com.colpix.empleados.domain.EmpleadoDetalle;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDTO;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDetalleDTO;
+import com.colpix.empleados.infraestructure.dto.EmpleadoACargoDTO;
 import com.colpix.empleados.infraestructure.entity.EmpleadoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -31,4 +33,6 @@ public interface EmpleadoMapper {
 
 
     List<EmpleadoDetalleDTO> toEmpleadoDetalleDTOList(List<Empleado> empleados);
+
+    EmpleadoACargoDTO toEmpleadosACargoDTO(EmpleadoDetalle empleadoDetalle);
 }
