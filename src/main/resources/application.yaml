@@ -12,3 +12,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+jwt:
+  secret: clave_de_mas_de_32_caracteres_colpix_empleados
+  expiration: 300000
+

@@ -1,8 +1,7 @@
-package com.colpix.empleados.infraestructure;
+package com.colpix.empleados.infraestructure.controller;
 
 import com.colpix.empleados.application.service.EmpleadoService;
 import com.colpix.empleados.domain.Empleado;
-import com.colpix.empleados.domain.EmpleadoDetalle;
 import com.colpix.empleados.infraestructure.dto.EmpleadoACargoDTO;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDTO;
 import com.colpix.empleados.infraestructure.dto.EmpleadoDetalleDTO;
