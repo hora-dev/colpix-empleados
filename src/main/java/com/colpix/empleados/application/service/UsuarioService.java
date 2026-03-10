@@ -14,4 +14,8 @@ public class UsuarioService {
     public Usuario buscarPorUsername(String username) {
         return this.usuarioRepository.buscarPorUsername(username);
     }
+
+    public Usuario crearUsuario(Usuario usuario) {
+        return this.usuarioRepository.crearUsuario(usuario);
+    }
 }

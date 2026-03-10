@@ -7,6 +7,7 @@ import com.colpix.empleados.infraestructure.dto.LoginRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ public class LoginController {
 
     private final JwtService jwtService;
     private final UsuarioService usuarioService;
+    private final PasswordEncoder passwordEncoder;
+
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDTO request){
@@ -31,7 +34,7 @@ public class LoginController {
         }
 
         if(request.getUsername().equals(usuario.getUsername())
-                && request.getPassword().equals(usuario.getPassword())) {
+                && passwordEncoder.matches(request.getPassword(),usuario.getPassword())) {
 
             String token = jwtService.generateToken(request.getUsername());
             return ResponseEntity.ok(token);

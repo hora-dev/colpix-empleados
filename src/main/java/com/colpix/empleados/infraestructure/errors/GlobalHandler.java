@@ -20,4 +20,10 @@ public class GlobalHandler {
         log.error("Empleado no encontrado: {}", entityNotFoundException.getMessage());
         return ResponseEntity.notFound().build();
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> usuarioYaExiste(IllegalArgumentException illegalArgumentException) {
+        log.error("Usuario ya existe: {}", illegalArgumentException.getMessage());
+        return ResponseEntity.badRequest().body(illegalArgumentException.getMessage());
+    }
 }
