@@ -22,7 +22,7 @@ public class EmpleadoEntity {
     private LocalDateTime updatedAt;
 
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne
     @JoinColumn(name = "supervisor_id")
     private EmpleadoEntity supervisor;
 }
