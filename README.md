@@ -16,6 +16,13 @@ Challengue para la empresa Colpix
 4. Bajar y volver a ejecutar EmpleadosApplication
 5. loguearse con admin/1234 en -> http://localhost:8080/api/v1/auth/login
 
+
+### Para levantar con docker
+1. Ubicarse en la raiz
+2. Ejecutar docker-compose build
+3. Ejecutar docker-compose up -d
+4. Ya deberia estar disponible la app en el puerto 8080.
+
 ###
 ### Para ejecutar SonarQube y ver la cobertura del codigo
 

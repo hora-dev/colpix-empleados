@@ -16,6 +16,21 @@ services:
     networks:
       - sonar-network
 
+  empleados-api:
+    build: .
+    container_name: empleados-api
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/app_db
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      JWT_SECRET: clave_de_mas_de_32_caracteres_colpix_empleados
+    networks:
+      - sonar-network
+
   sonarqube:
     image: sonarqube:community
     container_name: sonarqube
