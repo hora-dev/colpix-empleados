@@ -11,7 +11,10 @@ Challengue para la empresa Colpix
 ### Instrucciones de uso
 
 1. Ubicarse en el raiz y hacer docker-compose up -d para levantar la bd y sonarqube
-2. ejecutar EmpleadosApplication
+2. Ejecutar EmpleadosApplication
+3. Agregar un usuario admin con password = $2a$10$vnraRAskEtLYOO6QVhM8tuij8A.Zc7pbJAtNzZao/FZdtbSVka7Ym en tabla usuarios
+4. Bajar y volver a ejecutar EmpleadosApplication
+5. loguearse con admin/1234 en -> http://localhost:8080/api/v1/auth/login
 
 ###
 ### Para ejecutar SonarQube y ver la cobertura del codigo
