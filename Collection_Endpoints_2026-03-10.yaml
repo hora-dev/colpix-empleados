@@ -1,0 +1,249 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: colpix empleados
+meta:
+  id: wrk_3213a1faac824206b6ddee07cad6014d
+  created: 1772922369454
+  modified: 1772922369453
+  description: ""
+collection:
+  - name: empleados
+    meta:
+      id: fld_474e6b8897e04821bea643370b335029
+      created: 1773103551442
+      modified: 1773103551442
+      sortKey: -1773103551442
+      description: ""
+    children:
+      - url: http://localhost:8080/api/v1/empleados/
+        name: new
+        meta:
+          id: req_a9ef71c7d7384b88befbe6f0b4c09cdc
+          created: 1772922380024
+          modified: 1773103773176
+          isPrivate: false
+          description: ""
+          sortKey: -1773103579084
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nombre" : "Emilio",
+            	"email" : "email@email.com",
+            	"supervisorId" : null
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+          - name: password
+            value: e0520d39-d367-4f81-b067-ab347e48da05
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MzEwMzY4MywiZXhwIjoxNzczMTAzOTgzfQ.Xo4VODYOu6CdnOBfZq61jEJzT6vsEAtIbiAx3kMFV38
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/v1/empleados/
+        name: update
+        meta:
+          id: req_5ecf0d7f53114d8a91bb393df3752497
+          created: 1772924476520
+          modified: 1773103589499
+          isPrivate: false
+          description: ""
+          sortKey: -1773103579184
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            		"id": 20,
+            		"nombre": "Pablo",
+            		"email": "pablo@email.com",
+            		"supervisorId": null
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+          - name: password
+            value: e0520d39-d367-4f81-b067-ab347e48da05
+            description: ""
+            disabled: false
+        authentication:
+          type: basic
+          useISO88591: false
+          username: user
+          password: 4821b830-0644-462d-8912-390d8c805a6e
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/v1/empleados/
+        name: detalles
+        meta:
+          id: req_2487b51df8644d17bcbd95305c14c19d
+          created: 1773003395417
+          modified: 1773103750620
+          isPrivate: false
+          description: ""
+          sortKey: -1773103578884
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MzEwMzY4MywiZXhwIjoxNzczMTAzOTgzfQ.Xo4VODYOu6CdnOBfZq61jEJzT6vsEAtIbiAx3kMFV38
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/v1/empleados/detalle/20
+        name: detalle
+        meta:
+          id: req_c0c8d9da89a74f0bb113dff57d7d260f
+          created: 1773012330669
+          modified: 1773117221786
+          isPrivate: false
+          description: ""
+          sortKey: -1773103578984
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWFuIiwiaWF0IjoxNzczMTE3MjExLCJleHAiOjE3NzMxMTc1MTF9.rS6DSbXPK4j3dLNm2wfDrs1UnT7PaAjbusEgv3mklEw
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: usuarios
+    meta:
+      id: fld_a6bb127545f548509428f14e4d1890f4
+      created: 1773103557041
+      modified: 1773103557041
+      sortKey: -1773103557041
+      description: ""
+    children:
+      - url: http://localhost:8080/api/v1/auth/login
+        name: login
+        meta:
+          id: req_dd6abb80c34d47d2b26e12ba34e2c45d
+          created: 1773096610496
+          modified: 1773105412212
+          isPrivate: false
+          description: ""
+          sortKey: -1773103606427
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username" : "juan",
+            	"password" : "1234"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/v1/usuarios/
+        name: nuevo usuario
+        meta:
+          id: req_84de402ced2a4287b818c1eaf6844eb1
+          created: 1773103534067
+          modified: 1773105379491
+          isPrivate: false
+          description: ""
+          sortKey: -1773103606327
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username" : "juan",
+            	"password" : "1234",
+            	"enabled" : true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MzEwNTM2NSwiZXhwIjoxNzczMTA1NjY1fQ.U_Jhhx5mvDIbWWExElSQVtOfbmXSeQ5gt9786laX7hQ
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_656c7bba97b3d33ada36dadae633fcace0a51778
+    created: 1772922369459
+    modified: 1773117205825
+  cookies:
+    - id: 9e7e12ae-e9d8-4a34-8cb6-f2144d120bbf
+      key: JSESSIONID
+      value: F995BD7539A289D47F98CCEB3304F914
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      hostOnly: true
+environments:
+  name: Base Environment
+  meta:
+    id: env_656c7bba97b3d33ada36dadae633fcace0a51778
+    created: 1772922369456
+    modified: 1772922369456
+    isPrivate: false
